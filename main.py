@@ -161,26 +161,27 @@ if os.path.exists('save.backup'):
 while isAlive:
     commande = get_cmd()
 
-    if commande == 'ajout':
+    if commande == 'ajout' or commande == '1':
         cmd_ajout(param)
         continue
-    if commande == 'individu':
+    
+    if commande == 'individu' or  commande == '2':
         cmd_individu(param)
         continue
 
-    if commande == 'nouvelle nage':
+    if commande == 'nouvelle nage' or  commande ==  '3':
         cmd_nouvelle_nage(param)
         continue
 
-    if commande == 'liste':
+    if commande == 'liste' or '4':
         cmd_liste(param)
         continue
 
-    if commande == 'nageur':
+    if commande == 'nageur' or '5':
         cmd_nageur(param)
         continue
 
-    if commande == 'nage':
+    if commande == 'nage' or '6':
         cmd_nage(param)
         continue
 
