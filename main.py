@@ -107,6 +107,28 @@ def cmd_nage(param):
             dt_j = date[0]
             print(f" {nageur:11}|  {elt[2]}  | {dt_j}-{dt_m}-{dt_a}")
 
+def cmd_date(param):
+    """Affiche toutes les performances correspondantes a une date donnée"""
+    dtr_a = int(input("quel année ? "))
+    dtr_m = int(input("quel mois ? "))
+    dtr_j = int(input("quel jour ? "))
+    for elt in [bdd] :
+        date = elt[3]
+        dt_a = date[2]
+        dt_m = date[1]
+        dt_j = date[0]
+        if dtr_a == dt_a and dtr_m == dt_m and dtr_j == dt_j :
+            nageur = get_str_from_num_in_list(elt[0], param['nageurs'])
+            nage = get_str_from_num_in_list(elt[1], param['nages'])
+            date = elt[3]
+            dt_a = date[2]
+            dt_m = date[1]
+            dt_j = date[0]
+            print(f" {nageur:11}| {nage:8}|  {elt[2]}  | {dt_j}-{dt_m}-{dt_a}")
+
+    
+
+
 
 def cmd_exit(param):
     tmp = input("En êtes-vous sûr ? (o)ui/(n)on ")
