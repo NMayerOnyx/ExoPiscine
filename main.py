@@ -3,7 +3,7 @@ import os
 commande = ''
 
 #default values
-param = {'bdd': [(1,3,10),(2,1,13),(3,2,6), (3,1,8) ],
+param = {'bdd': [(1,3,10,(11,2,2024)),(2,1,13,(19,10,2022)),(3,2,6,(3,11,2004)), (3,1,8,(9,1,2011)) ],
          'nages': [(1, "Brasse"), (2, "Dos"), (3, "Crawl")],
          'nageurs': [(1, "Pierre"), (2, "Paul"), (3, "Léa")]
         }
@@ -51,17 +51,25 @@ def cmd_ajout(param):
         print(f"{elt[0]:5} : {elt[1]}")
     b = int(input("Nage n° ? "))
     c = int(input("combien de longueur ? "))
-    param['bdd'].append((a,b,c))
+    dt_a = int(input("quel année ? "))
+    dt_m = int(input("quel mois ? "))
+    dt_j = int(input("quel jour ? "))
+    d = (dt_j,dt_m,dt_a)
+    param['bdd'].append((a,b,c,d))
 
 
 def cmd_liste(param):
     """Affiche toutes les performances des nageurs"""
-    print("Prénom      |  nage   |  longueur")
-    print("---------------------------------")
+    print("Prénom      |  nage   |  longueur  | Date")
+    print("------------------------------------------")
     for elt in param['bdd']:
         nageur = get_str_from_num_in_list(elt[0], param['nageurs'])
         nage = get_str_from_num_in_list(elt[1], param['nages'])
-        print(f" {nageur:11}| {nage:8}|  {elt[2]}")
+        date = elt[3]
+        dt_a = date[2]
+        dt_m = date[1]
+        dt_j = date[0]
+        print(f" {nageur:11}| {nage:8}|  {elt[2]}  | {dt_j}-{dt_m}-{dt_a}")
 
 
 def cmd_nageur(param):
@@ -173,27 +181,27 @@ while isAlive:
         cmd_nouvelle_nage(param)
         continue
 
-    if commande == 'liste' or '4':
+    if commande == 'liste' or commande == '4':
         cmd_liste(param)
         continue
 
-    if commande == 'nageur' or '5':
+    if commande == 'nageur' or commande == '5':
         cmd_nageur(param)
         continue
 
-    if commande == 'nage' or '6':
+    if commande == 'nage' or commande == '6':
         cmd_nage(param)
         continue
 
-    if commande == 'save':
+    if commande == 'save' or commande == '7':
         cmd_save(param)
         continue
 
-    if commande == 'load':
+    if commande == 'load' or commande == '8':
         cmd_load(param)
         continue
 
-    if commande == 'exit':
+    if commande == 'exit' or commande == '9':
         isAlive = cmd_exit(param)
         continue
 
