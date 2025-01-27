@@ -46,14 +46,14 @@ def cmd_ajout(param):
     """Ajoute un évènement à la liste"""
     for elt in param['nageurs']:
         print(f"{elt[0]:5} : {elt[1]}")
-    a = int(input("Nageur n° ? "))
+    a = int(get_int_value("Nageur n° ? "))
     for elt in param['nages']:
         print(f"{elt[0]:5} : {elt[1]}")
-    b = int(input("Nage n° ? "))
-    c = int(input("combien de longueur ? "))
-    dt_a = int(input("quel année ? "))
-    dt_m = int(input("quel mois ? "))
-    dt_j = int(input("quel jour ? "))
+    b = int(get_int_value("Nage n° ? "))
+    c = int(get_int_value("combien de longueur ? "))
+    dt_a = int(get_int_value("quel année ? "))
+    dt_m = int(get_int_value("quel mois ? "))
+    dt_j = int(get_int_value("quel jour ? "))
     d = (dt_j,dt_m,dt_a)
     param['bdd'].append((a,b,c,d))
 
@@ -76,7 +76,7 @@ def cmd_nageur(param):
     """Affiche toutes les performances d'un nageur"""
     for elt in param['nageurs']:
         print(f"{elt[0]:5} : {elt[1]}")
-    tmp = int(input("Quel numéro de nageur ? "))
+    tmp = int(get_int_value("Quel numéro de nageur ? "))
     print("Performances de ", tmp)
     print("  nage   |  longueur  | Date")
     print("--------------------")
@@ -94,7 +94,7 @@ def cmd_nage(param):
     """Affiche toutes les performances suivant une nage donnée"""
     for elt in param['nages']:
         print(f"{elt[0]:5} : {elt[1]}")
-    tmp = int(input("Quel numéro de nage ? "))
+    tmp = int(get_int_value("Quel numéro de nage ? "))
     print("Nage ", tmp)
     print(" Nageur     |  longueur  | Date")
     print("------------------------")
@@ -109,9 +109,9 @@ def cmd_nage(param):
 
 def cmd_date(param):
     """Affiche toutes les performances correspondantes a une date donnée"""
-    dtr_a = int(input("quel année ? "))
-    dtr_m = int(input("quel mois ? "))
-    dtr_j = int(input("quel jour ? "))
+    dtr_a = int(get_int_value("quel année ? "))
+    dtr_m = int(get_int_value("quel mois ? "))
+    dtr_j = int(get_int_value("quel jour ? "))
     for elt in [bdd] :
         date = elt[3]
         dt_a = date[2]
@@ -190,16 +190,14 @@ def get_cmd():
     msg = msg.lower()
     return msg
 
-def get_int_value():
+def get_int_value(message):
     while True:
         try:
-            msg = int(input("Valeur ? "))
+            msg = int(input(message))
             return msg
         except:
             print("Indiquez bien une valeur numérique")
 
-
-print('le nombre est ', get_int_value())
 
 
 
