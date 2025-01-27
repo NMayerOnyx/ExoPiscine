@@ -78,12 +78,16 @@ def cmd_nageur(param):
         print(f"{elt[0]:5} : {elt[1]}")
     tmp = int(input("Quel numéro de nageur ? "))
     print("Performances de ", tmp)
-    print("  nage   |  longueur")
+    print("  nage   |  longueur  | Date")
     print("--------------------")
     for elt in param['bdd']:
         if elt[0]== tmp:
             nage = get_str_from_num_in_list(elt[1], param['nages'])
-            print(f" {nage:8}|  {elt[2]}")
+            date = elt[3]
+            dt_a = date[2]
+            dt_m = date[1]
+            dt_j = date[0]
+            print(f" {nage:8}|  {elt[2]}  | {dt_j}-{dt_m}-{dt_a}")
 
 
 def cmd_nage(param):
@@ -92,12 +96,16 @@ def cmd_nage(param):
         print(f"{elt[0]:5} : {elt[1]}")
     tmp = int(input("Quel numéro de nage ? "))
     print("Nage ", tmp)
-    print(" Nageur     |  longueur")
+    print(" Nageur     |  longueur  | Date")
     print("------------------------")
     for elt in param['bdd']:
         if elt[1]== tmp:
             nageur = get_str_from_num_in_list(elt[0], param['nageurs'])
-            print(f" {nageur:11}|  {elt[2]}")
+            date = elt[3]
+            dt_a = date[2]
+            dt_m = date[1]
+            dt_j = date[0]
+            print(f" {nageur:11}|  {elt[2]}  | {dt_j}-{dt_m}-{dt_a}")
 
 
 def cmd_exit(param):
