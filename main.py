@@ -190,6 +190,19 @@ def get_cmd():
     msg = msg.lower()
     return msg
 
+def get_int_value():
+    while True:
+        try:
+            msg = int(input("Valeur ? "))
+            return msg
+        except:
+            print("Indiquez bien une valeur numérique")
+
+
+print('le nombre est ', get_int_value())
+
+
+
 #
 #   Programme principal
 #
