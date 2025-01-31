@@ -127,7 +127,34 @@ def cmd_date(param):
             print(f" {nageur:11}| {nage:8}|  {elt[2]}  | {dt_j}-{dt_m}-{dt_a}")
 
     
-
+def cmd_nageur_stats(param):
+    """Affiche toutes les performances d'un nageur ainsi que ses statistiques"""
+    for elt in param['nageurs']:
+        print(f"{elt[0]:5} : {elt[1]}")
+    tmp = int(get_int_value("Quel numéro de nageur ? "))
+    print("Performances de ", tmp)
+    print("  nage   |  longueur ")
+    print("--------------------")
+    min=99999
+    max=0
+    tot=0
+    ct=0
+    moy=0
+    for elt in param['bdd']:
+        if elt[0]== tmp:
+            nage = get_str_from_num_in_list(elt[1], param['nages'])
+            if elt[2] < min :
+                min = elt[2]
+            if elt [2] > max :
+                max = elt[2]
+            tot += elt[2]
+            ct += 1
+            print(f" {nage:8}|  {elt[2]}")
+    moy = tot / ct
+    print("Minimum : ", min)
+    print("Maximum : ", max)
+    print("Moyenne : ", moy)
+    
 
 
 def cmd_exit(param):
@@ -244,6 +271,10 @@ while isAlive:
 
     if commande == 'exit' or commande == '9':
         isAlive = cmd_exit(param)
+        continue
+
+    if commande == 'stat' or commande == '10':
+        isAlive = cmd_nageur_stats(param)
         continue
 
     print(f"Commande {commande} inconnue")
