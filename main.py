@@ -112,7 +112,7 @@ def cmd_date(param):
     dtr_a = int(get_int_value("quel année ? "))
     dtr_m = int(get_int_value("quel mois ? "))
     dtr_j = int(get_int_value("quel jour ? "))
-    for elt in [bdd] :
+    for elt in ['bdd'] :
         date = elt[3]
         dt_a = date[2]
         dt_m = date[1]
